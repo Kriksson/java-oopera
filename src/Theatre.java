@@ -2,7 +2,7 @@ import Persons.Actor;
 import Persons.Director;
 import Persons.Gender;
 import Persons.Person;
-import Shows.Balet;
+import Shows.Ballet;
 import Shows.Opera;
 import Shows.Show;
 
@@ -50,7 +50,7 @@ public class Theatre {
         System.out.println("Автор музыки: " + operaMusicAuthor.getName() + " " + operaMusicAuthor.getSurname());
         System.out.println("Количество человек в хоре: " + opera.getChoirSize());
 
-        Balet balet = new Balet("Лебединое озеро",
+        Ballet ballet = new Ballet("Лебединое озеро",
                 110,
                 director1,
                 new ArrayList<>(),
@@ -60,13 +60,13 @@ public class Theatre {
         );
 
         System.out.println("\nБалет:");
-        System.out.println("Название: " + balet.getTitle());
-        System.out.println("Длительность: " + balet.getDuration() + " мин.");
-        balet.printDirectorName();
+        System.out.println("Название: " + ballet.getTitle());
+        System.out.println("Длительность: " + ballet.getDuration() + " мин.");
+        ballet.printDirectorName();
 
-        Person balletMusicAuthor = balet.getMusicAuthor();
+        Person balletMusicAuthor = ballet.getMusicAuthor();
         System.out.println("Автор музыки: " + balletMusicAuthor.getName() + " " + balletMusicAuthor.getSurname());
-        Person balletChoreographer = balet.getChoreographer();
+        Person balletChoreographer = ballet.getChoreographer();
         System.out.println("Хореограф: " + balletChoreographer.getName() + " " + balletChoreographer.getSurname());
 
         show.addActor(actor1);
@@ -75,17 +75,17 @@ public class Theatre {
         opera.addActor(actor2);
         opera.addActor(actor3);
 
-        balet.addActor(actor1);
-        balet.addActor(actor3);
+        ballet.addActor(actor1);
+        ballet.addActor(actor3);
 
-        System.out.println("Спектакль «Городские истории»:");
+        System.out.println("Спектакль «" + show.getTitle() + "»:");
         show.printActors();
 
-        System.out.println("\nОпера «Тайна старого замка»:");
+        System.out.println("\nОпера «" + opera.getTitle() + "»:");
         opera.printActors();
 
-        System.out.println("\nБалет «Лунное озеро»:");
-        balet.printActors();
+        System.out.println("\nБалет «" + ballet.getTitle() + "»:");
+        ballet.printActors();
 
         System.out.println("\nСостав спектакля после замены:");
         show.changeActor(actor3, "Иванов");
@@ -98,9 +98,9 @@ public class Theatre {
         opera.printLibretto();
 
         System.out.println("\nЛибретто балета:");
-        balet.printLibretto();
+        ballet.printLibretto();
 
         System.out.println("\nПытаемся добавить уже добавленного актёра:");
-        balet.addActor(actor1);
+        ballet.addActor(actor1);
     }
 }

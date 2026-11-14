@@ -3,6 +3,7 @@ package Shows;
 import Persons.Actor;
 import Persons.Director;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Show {
@@ -15,7 +16,7 @@ public class Show {
         this.title = title;
         this.duration = duration;
         this.director = director;
-        this.actors = actors;
+        this.actors = new ArrayList<>(actors);
     }
 
     public void printDirectorName() {
@@ -39,25 +40,26 @@ public class Show {
     }
 
     public void addActor(Actor actor) {
-        if (actors.contains(actor)) {
-            System.out.println("Такой актёр уже добавлен");
-        } else {
-            actors.add(actor);
+        for (Actor existActor : actors) {
+            if (existActor.getName().equals(actor.getName())
+            &&  existActor.getSurname().equals(actor.getSurname())
+            &&  existActor.getHeight() == actor.getHeight()) {
+                System.out.println("Такой актёр уже добавлен");
+                return;
+            }
         }
+        actors.add(actor);
     }
 
     public void changeActor(Actor actor, String surnameReplacedActor) {
-        boolean changed = false;
         for (int i = 0; i < actors.size(); i++) {
             Actor a = actors.get(i);
             if (a.getSurname().equals(surnameReplacedActor)) {
                 actors.set(i, actor);
-                changed = true;
+                return;
             }
         }
-        if (!changed) {
-            System.out.println("Такого актёра нет!");
-        }
+        System.out.println("Такого актёра нет!");
     }
 
     public String getTitle() {
