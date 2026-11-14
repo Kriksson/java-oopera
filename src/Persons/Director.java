@@ -11,4 +11,9 @@ public class Director extends Person {
     public int getNumberOfShows() {
         return numberOfShows;
     }
+
+    @Override
+    public String toString() {
+        return "Режиссёр: " + super.toString() + ", количество представлений: " + getNumberOfShows();
+    }
 }

@@ -14,6 +14,7 @@ public class Theatre {
         Actor actor1 = new Actor("Иван", "Иванов", Gender.MALE, 180);
         Actor actor2 = new Actor("Анна", "Петрова", Gender.FEMALE, 168);
         Actor actor3 = new Actor("Дмитрий", "Сидоров", Gender.MALE, 175);
+        Actor actor4 = new Actor("Иван", "Сидоров", Gender.MALE, 176);
 
         Director director1 = new Director("Алексей", "Орлов", Gender.MALE, 12);
         Director director2 = new Director("Мария", "Волкова", Gender.FEMALE, 8);
@@ -31,7 +32,6 @@ public class Theatre {
         System.out.println("Название: " + show.getTitle());
         System.out.println("Длительность: " + show.getDuration() + " мин.");
         show.printDirectorName();
-        System.out.println("Количество постановок режиссёра: " + director1.getNumberOfShows());
 
         Opera opera = new Opera("Тайна старого замка",
                 150,
@@ -47,7 +47,7 @@ public class Theatre {
         System.out.println("Длительность: " + opera.getDuration() + " мин.");
         opera.printDirectorName();
         Person operaMusicAuthor = opera.getMusicAuthor();
-        System.out.println("Автор музыки: " + operaMusicAuthor.getName() + " " + operaMusicAuthor.getSurname());
+        System.out.println("Автор музыки: " + operaMusicAuthor.toString());
         System.out.println("Количество человек в хоре: " + opera.getChoirSize());
 
         Ballet ballet = new Ballet("Лебединое озеро",
@@ -65,9 +65,9 @@ public class Theatre {
         ballet.printDirectorName();
 
         Person balletMusicAuthor = ballet.getMusicAuthor();
-        System.out.println("Автор музыки: " + balletMusicAuthor.getName() + " " + balletMusicAuthor.getSurname());
+        System.out.println("Автор музыки: " + balletMusicAuthor.toString());
         Person balletChoreographer = ballet.getChoreographer();
-        System.out.println("Хореограф: " + balletChoreographer.getName() + " " + balletChoreographer.getSurname());
+        System.out.println("Хореограф: " + balletChoreographer.toString());
 
         show.addActor(actor1);
         show.addActor(actor2);
@@ -89,6 +89,11 @@ public class Theatre {
 
         System.out.println("\nСостав спектакля после замены:");
         show.changeActor(actor3, "Иванов");
+        show.printActors();
+
+        show.addActor(actor4);
+        System.out.println("\nПопытка заменить актёра при наличии однофамильцев:");
+        show.changeActor(actor3, "Сидоров");
         show.printActors();
 
         System.out.println("\nПопытка заменить отсутствующего актёра:");

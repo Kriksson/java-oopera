@@ -22,4 +22,9 @@ public class Person {
     public Gender getGender() {
         return gender;
     }
+
+    @Override
+    public String toString() {
+        return name + " " + surname + ", пол: " + getGender();
+    }
 }

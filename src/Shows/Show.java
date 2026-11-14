@@ -20,7 +20,7 @@ public class Show {
     }
 
     public void printDirectorName() {
-        System.out.printf("Режиссёр: %s %s\n", director.getSurname(), director.getName());
+        System.out.println(director.toString());
     }
 
     public void printActors() {
@@ -52,14 +52,23 @@ public class Show {
     }
 
     public void changeActor(Actor actor, String surnameReplacedActor) {
+        int index = -1;
+        int matchCount = 0;
+
         for (int i = 0; i < actors.size(); i++) {
-            Actor a = actors.get(i);
-            if (a.getSurname().equals(surnameReplacedActor)) {
-                actors.set(i, actor);
-                return;
+            if (actors.get(i).getSurname().equals(surnameReplacedActor)) {
+                index = i;
+                matchCount++;
             }
         }
-        System.out.println("Такого актёра нет!");
+
+        if (matchCount == 0) {
+            System.out.println("Актёр не найден!");
+        } else if (matchCount > 1) {
+            System.out.println("Найдены однофамильцы, замена невозможна.");
+        } else {
+            actors.set(index, actor);
+        }
     }
 
     public String getTitle() {

@@ -11,4 +11,9 @@ public class Actor extends Person {
     public int getHeight() {
         return height;
     }
+
+    @Override
+    public String toString() {
+        return "Актёр: " + super.toString() + ", рост: " + height;
+    }
 }
